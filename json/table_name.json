@@ -1,0 +1,56 @@
+var table_name = {
+    "tables":[
+        {
+            "name":"Report Header",
+            "column":"all" 
+        },{
+            "name":"Version",
+            "column":"all"
+        },{
+            "name":"Control Files",
+            "column":"all"
+        },{
+            "name":"Data Files",
+            "column":[0, 1, 2, 3]
+        },{
+            "name":"Online Redo Logs",
+            "column":[2, 3, 4, 5, 6, 7]
+        },{
+            "name":"High Water Mark Statistics",
+            "column":[0, 2, 3]
+        },{
+            "name":"Current Sessions",
+            "column":"all"
+        },{
+            "name":"Initialization Parameters",
+            "column":[0, 2, 3]
+        },{
+            "name":"Tablespaces",
+            "column":"all"
+        },{
+            "name":"Database Growth",
+            "column":"all"
+        },{
+            "name":"UNDO Segment Contention",
+            "column":"all"
+        },{
+            "name":"UNDO Segments",
+            "column":"all"
+        },{
+            "name":"UNDO Retention Parameters",
+            "column":"all"
+        },{
+            "name":"Sorts",
+            "column":"all"
+        },{
+            "name":"PGA Target Advice",
+            "column":"all"
+        },{
+            "name":"File I/O Statistics",
+            "column":"all"
+        },{
+            "name":"RMAN Backup Jobs",
+            "column":"all"
+        }
+    ]
+}

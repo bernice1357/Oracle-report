@@ -1,0 +1,64 @@
+@page {
+  size: A4;
+  margin-top: 0.8cm;
+  margin-bottom: 1cm;
+  margin-left: 1cm;
+  margin-right: 1cm;
+  orphans: 4;
+  widows: 2;
+}
+body {
+  -webkit-print-color-adjust: exact;
+  font-size: 20px;
+}
+
+img {
+  width: 100%;
+}
+
+.page {
+  page-break-after: always;
+}
+
+table {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.page-border {
+  margin-top: 0.7cm;
+  margin-bottom: 0.7cm;
+}
+
+#page-1 center {
+  font-size: 30pt;
+}
+#page-1 center #logo {
+  margin-top: 120px;
+  width: 70%;
+}
+#page-1 center #title1 {
+  margin-top: 0px;
+}
+#page-1 center #title2 {
+  margin-top: 80px;
+}
+#page-1 center #title3 {
+  margin-top: 400px;
+}
+
+.menu a:link {
+  text-decoration: none;
+  color: #000000;
+}
+.menu a:visited {
+  text-decoration: none;
+  color: #000000;
+}
+.menu a:hover {
+  text-decoration: none;
+  color: #085695;
+}/*# sourceMappingURL=print.css.map */

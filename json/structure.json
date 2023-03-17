@@ -1,0 +1,521 @@
+var struct = {
+	"pages": [
+		{
+			"img-d0r": "file:///Users/bernicechaung/Desktop/oracle_project/assets/images/1.jpg",
+			"content-iak": [
+				"勞動部勞動力發展署技能檢定中心aaaa",
+				"rgb(222, 18, 18)",
+				"24pt",
+				"center",
+				"italic",
+				""
+			],
+			"content-rhm": [
+				"資料庫維護工作報告書",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-r3l": [
+				"(112年 1月份)",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-dsg": [
+				"精誠資訊股份有限公司謹製",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-lwm": [
+				"中華民國 112年1月",
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		{
+			"title-x3s": [
+				"目錄",
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		{
+			"title-e6i": [
+				"前言",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-lmh": [
+				"檢視LABOR技檢管理系統資料庫，並觀察其運作狀態，以期找出資料庫運行中的效能瓶頸及錯誤資訊予以排除，並調整正確的資料庫參數設定，維持資料庫最佳狀態。",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-emd": [
+				"資料庫系統基本配置如下：",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-5zw": "Report Header"
+		},
+		{
+			"title-oke": [
+				"一、資訊庫系統資訊",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-0js": "Report Header",
+			"content-djc": [
+				"基本系統資訊：",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"list-zhz": [
+				[
+					"a",
+					"a",
+					"a",
+					"a"
+				],
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		{
+			"title-oat": [
+				"二、資料庫架構檢查",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-hc9": [
+				"項目 02-0：版本資訊",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-uw2": "Version",
+			"content-wef": [
+				"說明：資料庫版本為 Oracle 11.2.0.4 Enterprise Edition",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-jva": [
+				"項目 02-1：控制檔案狀態",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-mgb": "Control Files",
+			"content-kyx": [
+				"說明：目前設定 control files 有 4 個，並已分別存放於    (/labor/oradata/labor/ , /oracle/oradata/labor/)二個路徑上。",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-hq1": [
+				"項目 02-2：資料檔案清單",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-ut6": "Data Files",
+			"content-eab": [
+				"說明：",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-psm": [
+				"項目 02-3：線上 REDO 儲存檔案清單",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-vio": "Online Redo Logs",
+			"content-qe8": [
+				"項目 02-4：資料庫各項數值高水位",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-yrn": "High Water Mark Statistics",
+			"content-rmo": [
+				"項目 2-5：資料庫 Shared Server 使用狀況",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-mn5": "Current Sessions",
+			"content-5y0": [
+				"說明：資料庫使用 Shared Server 模式，最大連線數為 800，目前已使用10%。",
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		{
+			"title-4pw": [
+				"三、初始化參數清單(SPFILE)",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-sja": "Initialization Parameters",
+			"content-kaq": [
+				"說明：",
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		{
+			"title-3rk": [
+				"四、資料庫使用狀態",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-lrt": [
+				"項目 04-1：資料庫 Table Space 使用情形",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-khs": "Tablespaces",
+			"content-nv7": [
+				"說明：剩餘空間比率尚屬正常，但其 Data File 有設定自動延展。",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-1p3": [
+				"項目 04-2：資料庫檔案",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-j0d": [
+				"說明：其主要重點為各資料檔是否設定自動增長(auto extend)，以避免 tablespace 空間不足時不能自動擴展空間，並注意新增 data file 時，需加入 autoextend 參數，本月資料庫檔案與上月相同，無增減情況。",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-y8n": [
+				"項目 04-4：資料庫成長情形",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-02u": "Database Growth"
+		},
+		{
+			"title-rky": [
+				"五、UNDO Segment 使用狀況",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-emw": "UNDO Segment Contention",
+			"content-5hu": [
+				"說明：Hit Ratio的比率為 100%( Ratio，比例愈高愈好)，使用狀況良好。",
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		{
+			"title-4kf": [
+				"六、Undo Tablespace 使用狀況",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-b36": "UNDO Segments",
+			"content-u70": [
+				"項目 06-1：UNDO segment summary 資訊清單",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-qbp": "UNDO Retention Parameters"
+		},
+		{
+			"title-lif": [
+				"七、排序(Sort)發生狀況(累積)",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-y22": "Sorts",
+			"content-uq8": [
+				"說明：Sort 的發生主要是 SQL 語句執行 ORDER BY 的行為，需在記憶體內(Memory sort)執行完成效率最好，Disk sort 次數愈少愈好，目前使用狀況良好。",
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		{
+			"title-kx6": [
+				"八、系統全體的 PGA 處理狀況",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-s4r": [
+				"說明：Estimated PGA Cache Hit 皆為90%以上，狀態良好。",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-ytw": [
+				"以下為 PGA 的設定值：",
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		{
+			"title-tlv": [
+				"九、磁碟存取狀況",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-gbr": "File I/O Statistics",
+			"content-p5u": [
+				"說明：資料庫檔案主要 I/O 以 Read 作業為主。",
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		{
+			"title-0kx": [
+				"十、作業系統磁碟空間狀況檢查",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-kn2": [
+				"1. AIXDB",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-212": [
+				"說明：",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-1h0": [
+				"以上使用空間容量(%Use)皆未超過 90%，容量使用正常。",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-3ue": [
+				"2. AIXDB_REMOTE (Standby DB)",
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		{
+			"title-ble": [
+				"十一、執行 Oracle Audit trail",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-bg4": [
+				"Oracle audit trail 功能，針對指定帳號及其動作執行 audit 記錄，說明如下：",
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		{
+			"title-dl8": [
+				"十二、Oracle RMAN 備份",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"table-lpu": "RMAN Backup Jobs",
+			"content-rgv": [
+				"  每日晚上 9:00 執行資料庫全備份動作，備份至1/11日排程執行正常。",
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		{
+			"title-w7p": [
+				"十三、現在使用(OPEN)帳號",
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		{
+			"title-lrd": [
+				"十四、資料庫效能狀況",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-pri": [
+				"說明：",
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		{
+			"title-0r3": [
+				"十五、DataGuard同歩狀態",
+				"",
+				"",
+				"",
+				"",
+				""
+			],
+			"content-45e": [
+				"主庫與備庫，同歩狀態顯示正常。",
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		{
+			"title-y9f": [
+				"十六、結論",
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		}
+	]
+}

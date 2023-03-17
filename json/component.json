@@ -1,0 +1,8 @@
+var component = {
+    'input': '<input type="text">',
+    'img': '<button>Browse...</button><center class="upload-message"><span>尚未有圖片上傳</span></center><img class="preview"></img>',
+    'content': '<p class="content"></p>',
+    //TODOselect
+    'table': '<table border="1" style="border-collapse: collapse;" width="100%"><tr><th>Title</th><th>Title</th><th>Title</th><th>Title</th><th>Title</th></tr><tr><td>content</td><td>content</td><td>content</td><td>content</td><td>content</td></tr><tr><td>content</td><td>content</td><td>content</td><td>content</td><td>content</td></tr></table>',
+    'new-page': '<div class="page-border"><p class="title">New title</p></div>'
+}
