@@ -21,25 +21,26 @@
         <button class="save hide" onclick="save()">結束編輯</button>
         <button class="edit" onclick="edit()">編輯</button>
         <button class="download" onclick="download()">儲存</button>
+        <button class="print" onclick="print()">列印</button>
     </div>
     <div id="page_block">
         <center style="display:block;">頁面修改操作按鈕</center>
-        <button id="deleteCurrent"><img name="title" width="50" src="./assets/svg/delete.svg"></img></button>
-        <button id="addPrevious"><img name="title" width="50" src="./assets/svg/up.svg"></img></button>
-        <button id="addAfter"><img name="title" width="50" src="./assets/svg/down.svg"></img></button>
+        <button id="deleteCurrent" class="deleteIcon"><img draggable="false" src="./assets/svg/delete.svg"></img></button>
+        <button id="addPrevious"><img draggable="false" src="./assets/svg/up.svg"></img></button>
+        <button id="addAfter"><img draggable="false" src="./assets/svg/down.svg"></img></button>
     </div>
     <div id="component_block">
         <center style="display:block;">拖曳元件至頁面上
-            <button name="title" draggable="true"><img name="title" width="50" src="./assets/svg/title.svg"></img></button>
-            <button name="content" draggable="true"><img name="text" width="50" src="./assets/svg/text.svg"></img></button>
-            <button name="image" draggable="true"><img name="image" width="50" src="./assets/svg/image.svg"></img></button>
-            <button name="table" draggable="true"><img name="table" width="50" src="./assets/svg/table.svg"></img></button>
-            <button name="list" draggable="true"><img name="list" width="50" src="./assets/svg/list.svg"></img></button>
+            <button name="title" draggable="true"><img name="title" draggable="true" src="./assets/svg/title.svg"></img></button>
+            <button name="text" draggable="true"><img name="text" draggable="true" src="./assets/svg/text.svg"></img></button>
+            <button name="image" draggable="true"><img name="image" draggable="true" src="./assets/svg/image.svg"></img></button>
+            <button name="table" draggable="true"><img name="table" draggable="true" src="./assets/svg/table.svg"></img></button>
+            <button name="list" draggable="true"><img name="list" draggable="true" src="./assets/svg/list.svg"></img></button>
         </center>
     </div>
-    <div id="styleBoard" class="hide">
-        <input type="color" id="font-color"/>
-        <select id="font-size">
+    <div id="styleBoard" class="hide" >
+        <input type="color" name="font-color"/>
+        <select name="font-size">
             <option>8</option>
             <option>9</option>
             <option>10</option>
@@ -47,6 +48,7 @@
             <option>12</option>
             <option>14</option>
             <option>18</option>
+            <option>20</option>
             <option>24</option>
             <option>30</option>
             <option>36</option>
@@ -55,17 +57,19 @@
             <option>72</option>
             <option>96</option>
         </select>
-        <br>
-        <button><img width="50" id="align-left" src="assets/svg/align-left.svg"></img></button>
-        <button><img width="50" id="align-center" src="assets/svg/align-center.svg"></img></button>
-        <button><img width="50" id="align-right" src="assets/svg/align-right.svg"></img></button>
-        <br>
-        <button><img width="50" id="italic" src="assets/svg/italic.svg"></img></button>
-        <button><img width="50" id="bold" src="assets/svg/bold.svg"></img></button>
-        <br>
-        <button><img width="50" id="list-circle" src="assets/svg/list-circle.svg"></img></button>
-        <button><img width="50" id="list-number" src="assets/svg/list-number.svg"></img></button>
-        <button><img width="50" id="list-square" src="assets/svg/list-square.svg"></img></button>
+
+        <button name="align-left"><img name="align-left" src="assets/svg/align-left.svg" draggable="false"></img></button>
+        <button name="align-center"><img name="align-center" src="assets/svg/align-center.svg" draggable="false"></img></button>
+        <button name="align-right"><img name="align-right" src="assets/svg/align-right.svg" draggable="false"></img></button>
+        <i class="fal fa-grip-lines-vertical"></i>
+
+        <button name="italic"><img name="italic" src="assets/svg/italic.svg" draggable="false"></img></i></button>
+        <button name="bold"><img name="bold" src="assets/svg/bold.svg" draggable="false"></img></button>
+        <i class="fal fa-grip-lines-vertical"></i>
+
+        <button name="list-circle"><img name="list-circle" src="assets/svg/list-circle.svg" draggable="false"></img></button>
+        <button name="list-number"><img name="list-number" src="assets/svg/list-number.svg" draggable="false"></img></button>
+        <button name="list-square"><img name="list-square" src="assets/svg/list-square.svg" draggable="false"></img></button>
     </div>
 </body>
 <script>
@@ -79,9 +83,9 @@
     function pageResize() {
         var pages = document.querySelectorAll('.page');
         for(var i=0; i<pages.length; i++){
-            if(pages[i].scrollHeight <= 1489 || !pages[i].scrollHeight){
+            if(pages[i].scrollHeight <= 1118 || !pages[i].scrollHeight){
 
-                pages[i].style.height = '1485px';
+                pages[i].style.height = '1114px';
             }else{
                 pages[i].style.height = 'auto';
             }
@@ -91,34 +95,32 @@
     //clear listeners
     function clearListeners(className){
         var el = document.querySelectorAll(className);
-        for(var i=0; i<el.length; i++){
-            elClone = el[i].cloneNode(true);
-            el[i].parentNode.replaceChild(elClone, el[i]);
+        if(el){
+            for(var i=0; i<el.length; i++){
+                elClone = el[i].cloneNode(true);
+                el[i].parentNode.replaceChild(elClone, el[i]);
+            }
         }
     }
 
-    //註冊 page listenersclearListeners
+    //註冊 page listeners
     function pageRegister(){
-        var pages = document.getElementsByClassName('page');
+        var pages = document.querySelectorAll('.page');
         
         for(var i=0; i<pages.length; i++){
         
-            pages[i].onclick = function(e){
+            pages[i].addEventListener("click", function(e){
 
                 //clear current page
                 for(var i=0; i<pages.length; i++){
                     pages[i].classList.remove('currentPage');
-                    currentPage = '';
                 }
+                currentPage = '';
 
                 //get which page is clicked
-                currentPageId = e.target.closest('.page');
-
-                if(currentPageId.id.includes('page')){
-                    currentPage = document.getElementById(String(currentPageId.id));
-                    currentPage.classList.add('currentPage');
-                }
-            }
+                currentPage = e.target.closest('.page');
+                currentPage.classList.add('currentPage');
+            })
         }
     }
 
@@ -146,16 +148,28 @@
                 };
 
                 //使用者透過 FilePicker 選取檔案
-                var target = e.target.parentNode.children[2];
+                var target = e.target.parentNode.children[1];//圖片child
                 fileHandle = await window.showOpenFilePicker(pickerOpts);
                 var file = await fileHandle[0].getFile();
                 target.src = './assets/images/'+file.name;
+            });
+        }
+    }
 
-                //如果是新元件要上傳圖片
-                if(target.className.includes('hide')){
-                    e.target.parentNode.children[1].classList.add('hide');
-                    target.classList.remove('hide');
-                }
+    function TableRegister(){
+
+        clearListeners('.table-border');
+        
+        var tables = document.querySelectorAll('.table-border');
+        for(var i=0; i<tables.length; i++){
+            tables[i].children[0].classList.remove('hide');//顯示select
+            //直接換一個新的table-border
+            tables[i].children[0].addEventListener('change', function(e){
+                var newTable = createTable(e.target.value, true);
+                var table_border = e.target.parentNode;
+                table_border.replaceWith(newTable);
+                pageResize()
+                TableRegister();
             });
         }
     }
@@ -164,8 +178,11 @@
         pageRegister();
     });
 
-
     function createTitle(content, style){
+
+        var newDiv = document.createElement('div');
+        newDiv.classList.add('comp-border');
+
         var newEl = document.createElement('p');
         newEl.classList.add('title');
 
@@ -176,12 +193,19 @@
             newEl.style.fontStyle = style[3];
             newEl.style.fontWeight = style[4];
         }
+        if(!newEl.style.fontSize) newEl.style.fontSize = "20pt";
         
         newEl.innerHTML = content;
-        return newEl;
+        newDiv.appendChild(newEl);
+        addDeleteButton(newDiv);
+        return newDiv;
     }
 
     function createContent(content, style){
+
+        var newDiv = document.createElement('div');
+        newDiv.classList.add('comp-border');
+
         var newEl = document.createElement('p');
         newEl.classList.add('content');
 
@@ -192,17 +216,21 @@
             newEl.style.fontStyle = style[3];
             newEl.style.fontWeight = style[4];
         }
+        if(!newEl.style.fontSize) newEl.style.fontSize = "14pt";
 
         //加入content
         newEl.innerHTML = content;
-        return newEl;
+        newDiv.appendChild(newEl);
+        addDeleteButton(newDiv); 
+        return newDiv;
     }
 
     function createTable(tableName, editable){
 
         //建立div
         var newEl = document.createElement('div');
-        newEl.className = 'table-border';
+        newEl.classList.add('table-border');
+        newEl.classList.add('comp-border');
         newEl.setAttribute("name", tableName);
 
         //加入table資料
@@ -215,6 +243,12 @@
 
         //新增select和選項
         var select = document.createElement('select');
+
+        //另外加入尚未選擇的option
+        var option = document.createElement('option');
+        option.innerHTML = "請選擇表格名稱";
+        select.appendChild(option);
+
         for(var item in table_name.tables){
             
             var option = document.createElement('option');
@@ -229,6 +263,7 @@
         if(!editable) select.classList.add('hide');
         newEl.insertBefore(select, newEl.children[0]);
 
+        addDeleteButton(newEl);
         return newEl;
     }
 
@@ -236,26 +271,30 @@
 
         //建立div
         var newEl = document.createElement('div');
-        newEl.className = 'img-border';
+        newEl.classList.add('img-border');
+        newEl.classList.add('comp-border');
         newEl.innerHTML = component['img'];
 
         //決定哪些要顯示
         if(!path){
-            newEl.children[2].classList.add('hide');
+            newEl.children[1].src = './assets/css/default.png';
         }else{
-            newEl.children[1].classList.add('hide');
-            newEl.children[2].src = path;
+            newEl.children[1].src = path;
         }
         newEl.children[0].classList.add('hide');
-
+        addDeleteButton(newEl);
         return newEl;
     }
     
     function createList(content, style){
-        
-        var newEl = document.createElement('ol');
-        newEl.classList.add('list');
 
+        var newDiv = document.createElement('div');
+        newDiv.classList.add('comp-border');
+        
+        var newEl = document.createElement('ul');
+        newEl.classList.add('list');
+        newEl.classList.add('text');
+        
         for(var i in content){
             var li = document.createElement('li');
             li.innerHTML = content[i];
@@ -268,9 +307,11 @@
             newEl.style.textAlign = style[2];
             newEl.style.fontStyle = style[3];
             newEl.style.fontWeight = style[4];
+            newEl.style.listStyleType = style[5];
         }
-
-        return newEl;
+        newDiv.appendChild(newEl);
+        addDeleteButton(newDiv);
+        return newDiv;
     }
 
     function createInput(content, style){
@@ -317,6 +358,33 @@
         }
         return newEl;
     }
+
+    //*****
+    //pageListeners報錯原因：
+    //在抓 currentPage 的時候因為 e.target 刪除導致抓不到 currentPage
+    //*****
+    function butListeners(){
+
+        clearListeners('.deleteBut');
+        var buts = document.querySelectorAll('.deleteBut');
+        
+        for(var i=0; i<buts.length; i++){
+            
+        }
+    }
+
+    function addDeleteButton(comp){
+        var but = document.createElement('button');
+        but.innerHTML = component['del-button'];
+        but.className = 'deleteBut';
+        comp.appendChild(but);
+        
+        but.addEventListener("click", function(e){
+            var target = e.target.closest('.comp-border');
+            target.remove();
+            pageResize();
+        })
+    }
 </script>
 <script src="./function/import/import.js"></script>
 <script src="./js/pageHeight.js"></script>
@@ -325,4 +393,5 @@
 <script src="./function/add/addComponent.js"></script>
 <script src="./function/add/addPage.js"></script>
 <script src="./function/export/export.js"></script>
+<script src="./function/print/print.js"></script>
 </html>

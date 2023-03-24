@@ -9,7 +9,7 @@
 }
 body {
   -webkit-print-color-adjust: exact;
-  font-size: 20px;
+  font-family: serif;
 }
 
 img {

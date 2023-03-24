@@ -1,0 +1,78 @@
+@page{
+    size: A4;
+    margin-top: 0.8cm;
+    margin-bottom: 1cm;
+    margin-left: 1cm;
+    margin-right: 1cm;
+    orphans:4;
+    widows:2;
+}
+
+body{
+    -webkit-print-color-adjust: exact;
+    font-family: serif;
+    // font-size: 20px;
+    // counter-reset: page-number;
+}
+
+img{
+    width: 100%;
+}
+
+.page{
+    page-break-after: always;
+}
+
+// .page::after{
+//     content: counter(page-number); /* 取用該名字的計數器
+//     counter-increment: page-number 1;
+// }
+
+table{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.page-border{
+    margin-top: 0.7cm;
+    margin-bottom: 0.7cm;
+}
+
+#page-1{
+    center{
+        font-size: 30pt;
+        #logo{
+            margin-top: 120px;
+            width: 70%;
+        }
+        #title1{
+            margin-top: 0px;
+        }
+        #title2{
+            margin-top: 80px;
+        }
+        #title3{
+            margin-top: 400px;
+        }
+    }
+}
+
+.menu{
+    a:link{
+        text-decoration:none;
+        color:#000000;
+    }
+    
+    a:visited{
+        text-decoration:none;
+        color:#000000;
+    }
+    
+    a:hover{
+        text-decoration:none;
+        color:#085695;
+    }
+}

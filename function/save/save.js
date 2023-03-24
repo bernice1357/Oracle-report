@@ -1,7 +1,8 @@
 function SaveImg(){
     var imgs = document.querySelectorAll('.img-border');
     for(var i=0; i<imgs.length; i++){
-        imgs[i].children[0].classList.add('hide');
+        var newEl = createImg(imgs[i].children[1].src);
+        imgs[i].replaceWith(newEl);
     }
 }
 
@@ -15,7 +16,7 @@ function SaveContent(){
         var list = [newStyle.color, newStyle.fontSize, newStyle.textAlign, newStyle.fontStyle, newStyle.fontWeight];
 
         var newEl = createContent(content[i].value, list);
-        content[i].replaceWith(newEl);
+        content[i].parentNode.replaceWith(newEl);
     }
 }
 
@@ -28,7 +29,7 @@ function SaveTitle(){
         var list = [newStyle.color, newStyle.fontSize, newStyle.textAlign, newStyle.fontStyle, newStyle.fontWeight];
 
         var newEl = createTitle(title[i].value, list);
-        title[i].replaceWith(newEl);
+        title[i].parentNode.replaceWith(newEl);
     }
 }
 
@@ -51,21 +52,36 @@ function SaveList(){
     
     for(var i=0; i<list.length; i++){
 
-        var newList = [];
-        var result = list[i].value.split('\n');
-
-        var newStyle = list[i].style;
-        var styleList = [newStyle.color, newStyle.fontSize, newStyle.textAlign, newStyle.fontStyle, newStyle.fontWeight];
-
-        for(var j=0; j<result.length; j++){
-
-            if(result[j]){
-                newList.push(result[j]);
-            }
+        var content = [];
+        for(var j=0; j<list[i].children.length; j++){
+            content.push(list[i].children[j].innerHTML);
         }
 
-        var newEl = createList(newList, styleList);
-        list[i].replaceWith(newEl);
+        var newStyle = list[i].style;
+        var styleList = [newStyle.color, newStyle.fontSize, newStyle.textAlign, newStyle.fontStyle, newStyle.fontWeight, newStyle.listStyleType];
+
+        var newEl = createList(content, styleList);
+        list[i].parentNode.replaceWith(newEl);
+
+        // list[i].setAttribute("contenteditable", "false");
+        // list[i].classList.remove("listEditable");
+
+        // var newList = [];
+        // var result = list[i].value.split('\n');
+        
+        // var newStyle = list[i].style;
+        // var styleList = [newStyle.color, newStyle.fontSize, newStyle.textAlign, newStyle.fontStyle, newStyle.fontWeight, newStyle.listStyleType];
+
+        // for(var j=0; j<result.length; j++){
+
+        //     console.log(result[j]);
+        //     if(result[j]){
+        //         newList.push(result[j]);
+        //     }
+        // }
+
+        // var newEl = createList(newList, styleList);
+        // list[i].replaceWith(newEl);
     }
 }
 
@@ -92,7 +108,7 @@ function save(){
     SaveImg();
     SaveList();
     SaveTitle();
-    UpdateMenu();   
+    UpdateMenu();
 
     var page_block = document.getElementById('page_block');
     page_block.classList.remove('hide');
@@ -112,4 +128,14 @@ function save(){
 
     clearListeners('#styleBoard');
     pageRegister();
+
+    var deleteBut = document.querySelectorAll('.deleteBut');
+    for(var i=0; i<deleteBut.length; i++){
+        deleteBut[i].classList.remove('hide');
+    }
+
+    if(currentText){
+        currentText.classList.remove('currentText');
+        currentText = '';
+    }
 }

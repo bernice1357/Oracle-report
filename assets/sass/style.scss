@@ -1,0 +1,280 @@
+$page-height: 1114px;
+$page-width: 788px;
+
+$small-font-size: 14pt;
+$big-font-size: 14pt;
+
+$blue: #aec0d5;
+$gray: #e3e2e2;
+
+//隱藏元素
+.hide{
+    display: none;
+    visibility: hidden;//這個會把event清掉
+}
+
+body{
+    font-family: serif;
+}
+
+img{
+    width: 100%;
+}
+
+.firstpage{
+    position: relative;
+    width: $page-width;
+    margin-bottom: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid #000;
+}
+
+.page{
+    position: relative;
+    width: $page-width;
+    margin-bottom: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid #000;
+}
+
+.currentPage{
+    border-color: rgb(224, 192, 47);
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px
+}
+
+.currentText{
+    box-shadow: 0 0 5pt 2pt #dd0d0d;
+}
+
+.page-border{
+    margin-left: 1.5cm;
+    margin-right: 1.5cm;
+    margin-top: 1.8cm;
+    margin-bottom: 1.8cm;
+}
+
+#btnBlock{
+    width: 150px;
+    position: fixed;
+    right: 3%;
+    bottom: 3%;
+    z-index: 1;
+
+    button{
+        width: 100%;
+        margin: 10px;
+        font-size: 25px;
+        z-index: -1;
+    }
+}
+
+#styleBoard{
+    z-index: 1;
+    position: fixed;
+    padding: 8px;
+    top: 1%;
+    right: 2%;
+    height: 40px;
+    border: 1px #000 solid;
+    display: flex;
+    align-items: flex-start;
+
+    select, input, button{
+        height: 100%;
+        font-family: serif;
+        width: 40px;
+    }
+    *{
+        margin-right: 5px;
+    }
+    svg{
+        height: 50px;
+        width: 50px;
+    }
+}
+.comp-border{
+    position: relative;
+
+    .deleteBut{
+        z-index: 1;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: -6%;
+        top: calc(50% - 13px);
+        border: none;
+        outline: none;
+        background: none;
+    }
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.page_number{
+    position: absolute;
+    bottom: 50px;
+}
+
+table{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    border-collapse: collapse;
+    font-size: 5pt;
+}
+
+#page-1{
+    .page-border{
+        #logo{
+            margin-top: 50px;
+        }
+        #head1{
+            margin-top: 0px;
+        }
+        #head2{
+            margin-top: 80px;
+        }
+        #head3{
+            margin-top: 500px;
+        }
+    }
+}
+
+.menu{
+    a:link{
+        text-decoration:none;
+        color:#000000;
+    }
+    
+    a:visited{
+        text-decoration:none;
+        color:#000000;
+    }
+    
+    a:hover{
+        text-decoration:none;
+        color:#085695;
+    }
+}
+
+.title{
+    font-size: 14pt;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.content{
+    font-size: 10pt;
+}
+
+p, table{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.upload-message{
+    border: 1px #000 solid;
+    width: 100%;
+    height: 250px;
+}
+
+#component_block{
+    border: 1px #000 solid;
+    position: fixed;
+    left: 15%;
+    top: calc(50% - 250px);
+    z-index: 1;
+    width: 70px;
+
+    button{
+        margin: 10px;
+        z-index: -1;
+        border-radius: 30px;
+        width: 40px;
+        height: 40px;
+
+        img{
+            width: 20px;
+        }
+    }
+}
+
+#page_block{
+    border: 1px #000 solid;
+    position: fixed;
+    right: 4%;
+    top: 3%;
+    z-index: 1;
+
+    button{
+        margin: 10px;
+        z-index: -1;
+        border-radius: 30px;
+        width: 40px;
+        height: 40px;
+
+        img{
+            width: 20px;
+        }
+    }
+}
+
+svg{
+    height: 80px;
+    width: 80px;
+}
+
+input, textarea, .listEditable{
+    display: block;
+    width: calc($page-width - 3cm);
+    border-radius: 15px;
+    font-family: serif;
+    font-size: 14pt;
+}
+
+input{
+    background-color: $blue; 
+}
+
+.listEditable{
+    border: 1px rgb(118, 118, 118) solid;
+    width: calc($page-width - 3cm - 40px);
+    font-size: 14pt;
+    line-height: 0.8;
+}
+
+textarea, .listEditable{
+    resize: none;
+    background-color: $gray;
+}
+
+select{
+    font-size: 10pt;
+    width: calc($page-width - 3cm);
+}
+
+span{
+    width: 200px;
+}
+
+.text{
+    line-height: 1.2;
+}
+
+
+
+.list, .text, .img-border, .table-border{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.deleteIcon{
+    background-color: rgb(237, 150, 150);
+}
+

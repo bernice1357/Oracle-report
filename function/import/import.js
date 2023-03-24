@@ -52,6 +52,8 @@ function addPage(count, page){
             var value = pageData[0];
             pageData.shift();
             child = createTitle(value, pageData);
+
+            // console.log(pageData)
             
         //表格
         }else if(item.includes('table')){

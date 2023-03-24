@@ -10,45 +10,74 @@ function createJSON(result){
         data.pages.push({});
 
         var current = data.pages[i];
-        var children = htmlPages[i].children;
+        var borders = htmlPages[i].children;
 
         //頁面中每個元素
-        for(var j=0; j<children.length; j++){
+        for(var j=0; j<borders.length; j++){
 
             //搜尋元件的 class name
-            var name = children[j].className;
+            var borderName = borders[j].className;
+            console.log(borderName);
 
-            if(name.includes('img-border')){
+            if(borderName.includes('img-border')){
+                
+                current['img-'+Random()] = borders[j].children[2].src;
+            }
+            else if(borderName.includes('table-border')){
+                current['table-'+Random()] = borders[j].getAttribute('name');
+            }
+            else if(borderName.includes('comp-border')){
 
-                current['img-'+Random()] = children[j].children[2].src;
-            }
-            else if(name.includes('content')){
-                var newList =[children[j].innerText, children[j].style.color, children[j].style.fontSize, children[j].style.textAlign, children[j].style.fontStyle, children[j].style.fontWeight];
-                current['content-'+Random()] = newList;
-            }
-            else if(name.includes('title')){
-                var newList =[children[j].innerText, children[j].style.color, children[j].style.fontSize, children[j].style.textAlign, children[j].style.fontStyle, children[j].style.fontWeight];
-                current['title-'+Random()] = newList;
-            }
-            else if(name.includes('list')){
+                var child = borders[j].children[0];
 
-                var value=[];
-                for(var item=0; item<children[j].children.length; item++){
-                    value.push(children[j].children[item].innerText);
+                if(child.className.includes('content')){
+
+                    var newList =[
+                        child.innerText, 
+                        child.style.color, 
+                        child.style.fontSize, 
+                        child.style.textAlign, 
+                        child.style.fontStyle, 
+                        child.style.fontWeight
+                    ];
+                    current['content-'+Random()] = newList;
                 }
-                var newList =[value, children[j].style.color, children[j].style.fontSize, children[j].style.textAlign, children[j].style.fontStyle, children[j].style.fontWeight];
-                current['list-'+Random()] = newList;
-            }
-            else if(name.includes('table') && children[j].tagName=='DIV'){
-                current['table-'+Random()] = children[j].getAttribute('name');
+                else if(child.className.includes('title')){
+
+                    var newList =[
+                        child.innerText, 
+                        child.style.color, 
+                        child.style.fontSize, 
+                        child.style.textAlign, 
+                        child.style.fontStyle, 
+                        child.style.fontWeight
+                    ];
+                    current['title-'+Random()] = newList;
+                }
+                else if(child.className.includes('list')){
+
+                    var value=[];
+                    for(var item=0; item<child.children.length; item++){
+                        value.push(child.children[item].innerText);
+                    }
+                    var newList =[
+                        value, 
+                        child.style.color, 
+                        child.style.fontSize, 
+                        child.style.textAlign, 
+                        child.style.fontStyle, 
+                        child.style.fontWeight, 
+                        child.style.listStyleType
+                    ];
+                    current['list-'+Random()] = newList;
+                }
             }
         }
     }
 
-    // console.log(data);
     var result = JSON.stringify(data, null, '\t');
     result = 'var struct = ' + result;
-    // console.log(result);
+    console.log(result);
     return result;
 }
 
@@ -82,6 +111,5 @@ async function saveFile(result) {
 
 function download(){
     var temp = createJSON();
-    // console.log(temp);
     saveFile(temp);
 }

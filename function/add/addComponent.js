@@ -21,23 +21,23 @@ document.addEventListener('drop', function(e){
 
             if(getText == 'title'){
 
-                newEl = createTitle('New title', []);
+                newEl = createTitle('New title', ['rgb(0,0,0)','24pt','','','']);//內容/樣式
     
             }else if(getText == 'text'){
 
-                newEl = createContent('New content', []);
+                newEl = createContent('New content', ['rgb(0,0,0)','14pt','','','']);//內容/樣式
     
             }else if(getText == 'table'){
 
-                newEl = createTable('', false);
+                newEl = createTable('', false);//表格名稱/是否在編輯模式
     
             }else if(getText == 'image'){
 
-                newEl = createImg('');
+                newEl = createImg('');//檔名
 
             }else if(getText == 'list'){
 
-                newEl = createList(['List item','List item','List item'], []);
+                newEl = createList(['List item','List item','List item'], ['rgb(0,0,0)','14pt','','','','decimal']);//內容/樣式
             }
 
             newTarget.after(newEl);
@@ -64,7 +64,6 @@ document.addEventListener('dragenter', function(e){
         for(var i=0; i<children.length; i++){
 
             var newTarget = findTarget(e);
-            console.log('aaa',newTarget);
 
             if(children[i]==newTarget){
                 //不穩定
@@ -97,21 +96,23 @@ document.addEventListener('dragleave', function(e){
 })
 
 function findTarget(e){
-    var newTarget;
+    // var newTarget;
 
-    var tableTag = ['TBODY','TD','TR','TH','TT'];
-    var imgTag = ['CENTER','IMG'];
-    var listTag = ['OL','LI'];
+    // var tableTag = ['TBODY','TD','TR','TH','TT'];
+    // var imgTag = ['CENTER','IMG'];
+    // var listTag = ['OL','LI'];
 
-    if(tableTag.includes(e.target.tagName)){
-        newTarget = e.target.closest('.table-border');
-    }else if(imgTag.includes(e.target.tagName)){
-        newTarget = e.target.closest('.img-border');
-    }else if(listTag.includes(e.target.tagName)){
-        newTarget = e.target.closest('.list');
-    }else{
-        newTarget = e.target;
-    }
-
+    // if(tableTag.includes(e.target.tagName)){
+    //     newTarget = e.target.closest('.table-border');
+    // }else if(imgTag.includes(e.target.tagName)){
+    //     newTarget = e.target.closest('.img-border');
+    // }else if(listTag.includes(e.target.tagName)){
+    //     newTarget = e.target.closest('.list');
+    // }else{
+    //     newTarget = e.target;
+    // }
+    var newTarget = e.target.closest('.comp-border');
     return newTarget;
 }
+
+var title = document.querySelector('.currentPage');

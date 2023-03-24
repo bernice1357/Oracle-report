@@ -17,10 +17,14 @@ function valueToHex(c) {
     return hex.length == 1 ? '0'+hex : hex;
 }
 
+function findCurText(el){
+    if(el.tagName == "TEXTAREA" || el.tagName == "INPUT") return el;
+    else return el.closest('ul');
+}
+
 function styleListeners(){
 
     var text = document.querySelectorAll('.text');
-
     for(var i=0; i<text.length; i++){
         text[i].addEventListener('mousedown',function(e){
 
@@ -28,11 +32,20 @@ function styleListeners(){
                 text[i].classList.remove('currentText');
             }
 
-            currentText = e.target;
-            e.target.classList.add('currentText');
+            currentText = findCurText(e.target);
+            currentText.classList.add('currentText');
 
-            //color change
+            //disable list type button
+            var list = ['list-circle', 'list-number', 'list-square'];
+            for(var j in list){
+                if(!currentText.className.includes('list')){
+                    document.querySelector("button[name="+ list[j] +"]").disabled = true;
+                }else{
+                    document.querySelector("button[name="+ list[j] +"]").disabled = false;
+                }
+            }
 
+            //change font color 
             //先把rgb的三個值取出來
             var currentColor = currentText.style.color;
             currentColor = currentColor.substring(4, currentColor.length-1).replace(/ /g, '').split(',');
@@ -41,11 +54,11 @@ function styleListeners(){
                 currentColor[j] = parseInt(currentColor[j]);
             }
             
-            var color = document.getElementById('font-color');
+            var color = document.querySelector("input[name='font-color']");
             color.value = '#' + valueToHex(currentColor[0]) + valueToHex(currentColor[1]) + valueToHex(currentColor[2]);
 
             //font size change
-            var size = document.getElementById('font-size');
+            var size = document.querySelector("select[name='font-size']");
             var textSize = currentText.style.fontSize;
 
             if(textSize){
@@ -59,7 +72,8 @@ function styleListeners(){
                         break;
                     }
                 }
-                size.value = (temp) ? '24' : '14';
+                size.value = (temp) ? '20' : '14';
+                //title: 20pt, content: 14pt
             }
         })
     }
@@ -69,7 +83,7 @@ function styleListeners(){
 
         if(!currentText) alert('尚未選取文字');
 
-        var action = e.target.id;
+        var action = e.target.name;
         var textStyle = currentText.style;
 
         switch(action){
@@ -88,24 +102,25 @@ function styleListeners(){
             case 'bold':
                 textStyle.fontWeight = (textStyle.fontWeight=="bold") ? "" : "bold";
                 break;
-            //TODOhere
-            case 'list-circle':
+            case 'list-circle':  
                 textStyle.listStyleType = "disc";
+                editListContent(currentText, textStyle.listStyleType);
                 break;
             case 'list-number':
                 textStyle.listStyleType = "decimal";
+                editListContent(currentText, textStyle.listStyleType);
                 break;
             case 'list-square':
-                console.log(textStyle.listStyleType);
                 textStyle.listStyleType = "square";
+                editListContent(currentText, textStyle.listStyleType);
                 break;
         }
     })
 
-    styleBoard.addEventListener('change', function(e){
+    styleBoard.addEventListener('input', function(e){
 
         var action = e.target;
-        switch(action.id){
+        switch(action.name){
             case 'font-size':
                 currentText.style.fontSize = action.value+'pt';
                 textResize(currentText);
@@ -148,39 +163,16 @@ function EditContent(){
 function EditList(){
 
     var list = document.querySelectorAll('.list');
+
     for(var i=0; i<list.length; i++){
 
-        var content='';
-        for(var j=0; j<list[i].children.length; j++){
-            content += (list[i].children[j].innerText+'\n');
-        }
-
-        var newStyle = list[i].style;
-        var styleList = [newStyle.color, newStyle.fontSize, newStyle.textAlign, newStyle.fontStyle, newStyle.fontWeight];
-
-        
-        var newEl = createTextarea(content, styleList, 'list');
-        
-        list[i].replaceWith(newEl);
-        textResize(newEl);
+        list[i].setAttribute("contenteditable", "true");
+        list[i].classList.add("listEditable");
     }
-}
-
-function tableListeners(target){
-    var newTable = createTable(target.value, true);
-    var table_border = target.parentNode;
-    table_border.replaceWith(newTable);
 }
 
 function EditTable(){
-
-    //抓到新的值再去table.json重抓一次表格
-    var tables = document.querySelectorAll('.table-border');
-
-    for(var i=0; i<tables.length; i++){
-        tables[i].children[0].classList.remove('hide');//select顯示
-        tables[i].children[0].addEventListener('change', tableListeners(tables[i].children[0]));
-    }
+    TableRegister();
 }
 
 //調整input高度
@@ -189,9 +181,7 @@ function textResize(target){
     target.style.height = 0;
 
     if(target.className.includes('title')){
-        // console.log(target.style.fontSize);
         target.style.height = target.style.fontSize;
-        // console.log(target.style.height);
     }else{
         target.style.height = (target.scrollHeight) + "pt";
     }
@@ -219,8 +209,13 @@ function edit(){
     var styleBoard = document.getElementById('styleBoard');
     styleBoard.classList.remove('hide');
 
-    ChangeBtn();
+    //隱藏刪除元件的按鈕
+    var deleteBut = document.querySelectorAll('.deleteBut');
+    for(var i=0; i<deleteBut.length; i++){
+        deleteBut[i].classList.add('hide');
+    }
 
+    ChangeBtn();
     EditTitle();
     EditContent();
     EditList();
@@ -232,6 +227,7 @@ function edit(){
     var input = document.querySelectorAll('.text');
     for(var i=0; i<input.length; i++){
         input[i].addEventListener('input', function(e){
+
             textResize(e.target);
         })
     }
